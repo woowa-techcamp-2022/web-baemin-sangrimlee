@@ -1,0 +1,24 @@
+{
+  "name": "web-baemin-sangrimlee",
+  "version": "1.0.0",
+  "description": "우아한테크캠프 이상림",
+  "keywords": [
+    "node.js",
+    "express",
+    "pug"
+  ],
+  "author": "sangrimlee <contact@sangrim.dev>",
+  "license": "ISC",
+  "homepage": "https://github.com/woowa-techcamp-2022/web-baemin-sangrimlee#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woowa-techcamp-2022/web-baemin-sangrimlee.git"
+  },
+  "bugs": {
+    "url": "https://github.com/woowa-techcamp-2022/web-baemin-sangrimlee/issues"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

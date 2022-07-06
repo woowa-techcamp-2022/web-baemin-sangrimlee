@@ -1,8 +1,10 @@
 extends layout
 include mixins/header
 
+block head 
+  link(rel='stylesheet', href='/stylesheets/index.css')
 block body
-  section.container
+  div.container
     a.login-link(href="/login")
       img(src="images/profile.png", alt="프로필 이미지", width="68px", height="68px")
       span 로그인해주세요.

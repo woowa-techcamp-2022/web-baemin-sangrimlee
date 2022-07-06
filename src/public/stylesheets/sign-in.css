@@ -1,0 +1,22 @@
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.sign-in-btn {
+  margin-top: 1rem;
+}
+
+.sign-up-link {
+  text-align: center;
+  color: var(--colors-gray-600);
+}
+
+.sign-up-link > a {
+  color: var(--colors-primary);
+}
+
+.sign-up-link > a:hover {
+  text-decoration: underline;
+}

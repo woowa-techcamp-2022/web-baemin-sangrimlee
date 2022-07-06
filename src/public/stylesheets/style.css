@@ -39,10 +39,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 .container {
   padding: 0 1.25rem;
 }
@@ -94,13 +90,4 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.sign-up-link {
-  text-align: center;
-  color: var(--colors-gray-600);
-}
-
-.sign-up-link > a {
-  color: var(--colors-primary);
 }

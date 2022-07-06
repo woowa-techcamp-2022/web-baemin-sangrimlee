@@ -6,9 +6,15 @@ block body
   div.l-vertical
     div.container
       form.sign-in-form
-        input.auth-input(id="email" name="email" type="text", placeholder="아이디 또는 이메일")
-        input.auth-input(id="password" name="password" type="password", placeholder="비밀번호")
+        div.form-input
+          input(id="email" name="email" type="text", placeholder="아이디 또는 이메일")
+          p.form-input-error 123123
+        div.form-input
+          input(id="password" name="password" type="password", placeholder="비밀번호")
+          p.form-input-error
         button.block-btn.theme-btn-primary.sign-in-btn(type="submit") 로그인
     div.container
       p.sign-up-link 혹시, 배달의민족이 처음이신가요? 
         a(href="/sign-up") 회원가입
+  block script
+    script(src="/javascripts/sign-in.js" type="module")

@@ -1,8 +1,9 @@
 extends layout
 
 block head 
-  link(rel='stylesheet', href='/stylesheets/index.css')
+  link(rel='stylesheet', href='/stylesheets/login.css')
 block body
   form.container.login-form
     input.auth-input(id="email" name="email" type="text", placeholder="아이디 또는 이메일")
     input.auth-input(id="password" name="password" type="password", placeholder="비밀번호")
+    button.block-btn.theme-btn-primary.login-btn(type="submit") 로그인

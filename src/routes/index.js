@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('index', { title: 'My배민' });
+  res.render('index', { title: 'My배민', headerTitle: 'My배민' });
 });
 
 router.get('/sign-in', (req, res) => {

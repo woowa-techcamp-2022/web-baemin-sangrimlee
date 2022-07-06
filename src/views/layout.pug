@@ -1,8 +1,13 @@
+include mixins/header 
+
 doctype html
 html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/header.css')
+    block head
   body
-    block content
+    +header("My배민")
+    block body

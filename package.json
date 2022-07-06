@@ -20,7 +20,9 @@
   "main": "app.js",
   "scripts": {
     "lint": "eslint 'src/**/*.js' 'bin/www' --fix",
-    "format": "prettier --write \"src/**/*.js\" \"bin/www\""
+    "format": "prettier --write \"src/**/*.js\" \"bin/www\"",
+    "dev": "nodemon bin/www",
+    "start": "node bin/www"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",

@@ -38,6 +38,12 @@ a {
   padding: 0 1.25rem;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
 .auth-input {
   width: 100%;
   border: none;

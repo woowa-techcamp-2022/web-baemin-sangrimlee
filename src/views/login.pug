@@ -3,6 +3,6 @@ extends layout
 block head 
   link(rel='stylesheet', href='/stylesheets/index.css')
 block body
-  form.container
+  form.container.login-form
     input.auth-input(id="email" name="email" type="text", placeholder="아이디 또는 이메일")
-
+    input.auth-input(id="password" name="password" type="password", placeholder="비밀번호")

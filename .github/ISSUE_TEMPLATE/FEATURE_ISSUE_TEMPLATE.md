@@ -1,15 +1,14 @@
 ---
 name: Feature
 about: 기능 추가 및 기본적인 작업을 위한 템플릿입니다.
-title: "[Feature]"
+title: '[Feature]'
 labels: enhancement
 assignees: ''
-
 ---
 
 # Feature
 
-## Description
+## 설명
 
 기능에 대한 상세한 설명
 

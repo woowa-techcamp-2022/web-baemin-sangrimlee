@@ -2,4 +2,7 @@ extends layout
 include mixins/header
 
 block body
-  div 메인페이지
+  section.container
+    a.login-link(href="/login")
+      img(src="images/profile.png", alt="프로필 이미지", width="68px", height="68px")
+      span 로그인해주세요.

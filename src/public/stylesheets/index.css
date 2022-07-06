@@ -8,5 +8,5 @@
   flex: 1;
   margin-left: 1rem;
   font-size: 1.75rem;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--colors-gray-500);
 }

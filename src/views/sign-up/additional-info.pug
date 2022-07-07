@@ -14,21 +14,22 @@ block main
           placeholder='이메일을 입력하세요.'
         )
         button.check-duplicate-btn.theme-btn-default(type='button', disabled) 중복확인
-      .additional-info-wrap.hidden
-        +form-input("nickname", "닉네임", false, true)(
+      .additional-input-wrap.hidden
+        +form-input("nickname", "닉네임", true, true, "nickname-input")(
           type='text',
           name='nickname',
           placeholder='닉네임을 입력하세요.'
         )
-        +form-input("password", "비밀번호", false, true)(
+        +form-input("password", "비밀번호", true, true, "password-input")(
           type='password',
           name='password',
           placeholder='비밀번호를 입력하세요.'
         )
-        +form-input("birth", "생년월일", false, true)(
+        +form-input("birthday", "생년월일", true, true, "birthday-input")(
           type='text',
-          name='birth',
-          placeholder='예) 2000.01.01'
+          name='birthday',
+          placeholder='예) 2000.01.01',
+          maxLength=10
         )
       input(type='submit', hidden)
 

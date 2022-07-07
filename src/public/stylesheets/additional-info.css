@@ -1,8 +1,8 @@
 .additional-info-form,
-.additional-info-wrap {
+.additional-input-wrap {
   display: flex;
   flex-direction: column;
-  row-gap: 2em;
+  row-gap: 2rem;
 }
 
 .email-wrap {

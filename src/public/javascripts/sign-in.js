@@ -3,8 +3,8 @@ function validateFormInput(
   errorMessage,
   validate = (value) => !!value,
 ) {
-  const $formInput = $element.parentElement;
-  const $formInputError = $element.nextSibling;
+  const $formInput = $element.closest('.form-input');
+  const $formInputError = $formInput.querySelector('.form-input-error');
   const isValid = validate($element.value);
   if (isValid) {
     $formInput.classList.remove('is-error');

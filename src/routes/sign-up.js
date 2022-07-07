@@ -39,4 +39,11 @@ router.get('/agree', (req, res) => {
   });
 });
 
+router.get('/verify-phone', (req, res) => {
+  res.render('sign-up/verify-phone', {
+    title: '회원가입',
+    headerTitle: '회원가입',
+  });
+});
+
 module.exports = router;

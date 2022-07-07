@@ -1,6 +1,10 @@
 const db = require('./index');
 const { hash } = require('../lib/hash');
 
+function isEmailExist(email, callback) {
+  db.get('SELECT email FROM user WHERE email = ? LIMIT 1', email, callback);
+}
+
 function createUser(email, nickname, password, birthday, callback) {
   db.run(
     'INSERT INTO user (email, nickname, password, birthday) VALUES (?,?,?,?)',
@@ -8,43 +12,21 @@ function createUser(email, nickname, password, birthday, callback) {
     nickname,
     hash(password),
     birthday,
-    (error) => {
-      if (error) {
-        callback(false);
-      } else {
-        callback(true);
-      }
-    },
+    callback,
   );
-}
-
-function isUserExist(email, callback) {
-  db.get('SELECT email FROM user WHERE email = ?', email, (error, rows) => {
-    if (error || rows === undefined) {
-      callback(false);
-    } else {
-      callback(true);
-    }
-  });
 }
 
 function signInUser(email, password, callback) {
   db.get(
-    'SELECT email FROM user WHERE email = ? AND password = ?',
+    'SELECT email FROM user WHERE email = ? AND password = ? LIMIT 1',
     email,
     hash(password),
-    (error, rows) => {
-      if (error || rows === undefined) {
-        callback(false);
-      } else {
-        callback(true);
-      }
-    },
+    callback,
   );
 }
 
 module.exports = {
   createUser,
-  isUserExist,
+  isEmailExist,
   signInUser,
 };

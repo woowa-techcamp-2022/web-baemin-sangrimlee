@@ -1,9 +1,10 @@
 extends layout
 
-block head 
+block head
   link(rel='stylesheet', href='/stylesheets/index.css')
-block body
-  div.container
-    a.login-link(href="/sign-in")
-      img(src="images/profile.png", alt="프로필 이미지", width="68px", height="68px")
+
+block main
+  .container
+    a.login-link(href='/sign-in')
+      img(src='images/profile.png', alt='프로필 이미지', width='68px', height='68px')
       span 로그인해주세요.

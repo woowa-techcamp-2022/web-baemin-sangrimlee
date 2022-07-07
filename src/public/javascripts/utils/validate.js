@@ -2,7 +2,17 @@ import {
   EMAIL_REGEX,
   NICKNAME_REGEX,
   PASSWORD_REGEXS,
+  PHONE_NUMBER_REGEX,
+  VERIFY_CODE_REGEX,
 } from '../constants/regex.js';
+
+export function validatePhoneNumber(phoneNumber) {
+  return PHONE_NUMBER_REGEX.test(phoneNumber);
+}
+
+export function validateVerifyCode(verifyCode) {
+  return VERIFY_CODE_REGEX.test(verifyCode);
+}
 
 export function validateEmail(email) {
   return EMAIL_REGEX.test(email);

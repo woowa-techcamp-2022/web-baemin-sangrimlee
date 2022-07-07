@@ -11,7 +11,11 @@ export function handleFormInputEvent($element, options) {
   const $deleteBtn = $element.querySelector('.delete-btn');
   const $errorMessage = $element.querySelector('.form-input-error');
 
-  const onChangeValue = (value) => {
+  function getValue() {
+    return $inputElement.value;
+  }
+
+  function setValue(value) {
     const processedValue = preprocess(value);
     $inputElement.value = processedValue;
     const isValid = validate(value);
@@ -19,18 +23,19 @@ export function handleFormInputEvent($element, options) {
     $element.classList.toggle('is-error', !isValid);
     $errorMessage.textContent = isValid ? '' : errorMessage;
     onValidate(isValid);
-  };
+  }
 
   $inputElement.addEventListener('input', (event) => {
-    onChangeValue(event.target.value);
+    setValue(event.target.value);
   });
 
   if ($deleteBtn) {
     $deleteBtn.addEventListener('click', () => {
-      $inputElement.value = '';
-      onChangeValue('');
+      setValue('');
     });
   }
+
+  return { getValue, setValue };
 }
 
 export function disableFormInput($element) {

@@ -1,11 +1,7 @@
 .sign-in-form {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
-}
-
-.sign-in-btn {
-  margin-top: 1rem;
+  row-gap: 2rem;
 }
 
 .sign-up-link {

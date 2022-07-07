@@ -53,14 +53,11 @@ input[type='checkbox'] + label i {
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 0.75rem;
-
-  border: 2px solid var(--colors-gray-200);
-  border-radius: 0.25rem;
+  background: url(/images/icons/checkbox-inactive.svg) no-repeat;
 }
 
 input[type='checkbox']:checked + label i {
-  border: 0;
-  background: url(/images/icons/btn-check.svg) no-repeat;
+  background: url(/images/icons/checkbox-active.svg) no-repeat;
 }
 
 .container {

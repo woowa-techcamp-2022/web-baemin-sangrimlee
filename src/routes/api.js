@@ -1,5 +1,7 @@
 const express = require('express');
-const { createUser, isEmailExist } = require('../db/user');
+const { createUUID } = require('../lib/uuid');
+const { createSession } = require('../db/session');
+const { createUser, isEmailExist, signInUser } = require('../db/user');
 
 const router = express.Router();
 
@@ -10,7 +12,7 @@ router.post('/sign-up', (req, res) => {
     if (isEmailExistError) {
       res.status(500).json({
         ok: false,
-        errorMessage: '알 수 없는 오류가 발생하였습니다.',
+        errorMessage: isEmailExistError.message,
       });
     } else if (user) {
       res.status(400).json({
@@ -22,12 +24,47 @@ router.post('/sign-up', (req, res) => {
         if (createUserError) {
           res.status(500).json({
             ok: false,
-            errorMessage: '알 수 없는 오류가 발생하였습니다.',
+            errorMessage: createUserError.message,
           });
         } else {
           res.status(201).json({
             ok: true,
           });
+        }
+      });
+    }
+  });
+});
+
+router.post('/sign-in', (req, res) => {
+  const { email, password } = req.body;
+
+  signInUser(email, password, (signInUserError, user) => {
+    if (signInUserError) {
+      res.status(500).json({
+        ok: false,
+        errorMessage: signInUserError.message,
+      });
+    } else if (!user) {
+      res.status(404).json({
+        ok: false,
+        errorMessage: '해당하는 로그인 정보를 찾을 수 없습니다.',
+      });
+    } else {
+      const sid = createUUID();
+      createSession(user.id, sid, (createSessionError) => {
+        if (createSessionError) {
+          res.status(500).json({
+            ok: false,
+            errorMessage: createSessionError.message,
+          });
+        } else {
+          res
+            .status(201)
+            .cookie('sid', sid, { maxAge: 60 * 60 * 24 * 30, httpOnly: true })
+            .json({
+              ok: true,
+            });
         }
       });
     }

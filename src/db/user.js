@@ -18,7 +18,7 @@ function createUser(email, nickname, password, birthday, callback) {
 
 function signInUser(email, password, callback) {
   db.get(
-    'SELECT email FROM user WHERE email = ? AND password = ? LIMIT 1',
+    'SELECT id, email FROM user WHERE email = ? AND password = ? LIMIT 1',
     email,
     hash(password),
     callback,

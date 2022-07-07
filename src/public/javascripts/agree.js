@@ -1,8 +1,7 @@
-const $form = document.querySelector('form.form-agree');
-const $submitBtn = document.querySelector('button[type="submit"]');
-
-$form.addEventListener('click', (event) => {
-  const currentTarget = event.target;
+function init() {
+  const $form = document.querySelector('.form-agree');
+  const $nextBtn = document.querySelector('.next-btn');
+  const $checkboxGroup = document.querySelector('.form-checkbox-group');
   const $agreeAllCheckbox = $form.querySelector('#agree-all');
   const $checkboxList = [
     ...$form.querySelectorAll('.form-checkbox > input:not(#agree-all)'),
@@ -11,26 +10,30 @@ $form.addEventListener('click', (event) => {
     (element) => element.required,
   );
 
-  if (
-    currentTarget &&
-    [$agreeAllCheckbox, ...$checkboxList].includes(currentTarget)
-  ) {
-    if (currentTarget.id === 'agree-all') {
+  $checkboxGroup.addEventListener('change', (event) => {
+    const $target = event.target;
+
+    if ($target.id === 'agree-all') {
       $checkboxList.forEach(($checkbox) => {
-        $checkbox.checked = currentTarget.checked;
+        $checkbox.checked = $target.checked;
       });
+      $nextBtn.disabled = !$target.checked;
     }
-    if (currentTarget.required || currentTarget.id === 'agree-all') {
-      $submitBtn.disabled = !$requiredCheckboxList.every(
+
+    if ($target.required) {
+      $nextBtn.disabled = !$requiredCheckboxList.every(
         (element) => element.checked,
       );
     }
+
     $agreeAllCheckbox.checked = $checkboxList.every(
       (element) => element.checked,
     );
-  }
-});
+  });
 
-$form.addEventListener('submit', (event) => {
-  event.preventDefault();
-});
+  $form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
+}
+
+init();

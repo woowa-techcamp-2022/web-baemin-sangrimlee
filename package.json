@@ -20,7 +20,7 @@
   "main": "app.js",
   "scripts": {
     "lint": "eslint 'src/**/*.js' 'bin/www' --fix",
-    "format": "prettier --write \"src/**/*.js\" \"bin/www\"",
+    "format": "prettier --write \"src/**/*.js\" \"bin/www\" \"**/*.pug\"",
     "dev": "nodemon bin/www",
     "start": "node bin/www"
   },
@@ -34,6 +34,7 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
+    "@prettier/plugin-pug": "^2.1.1",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1"

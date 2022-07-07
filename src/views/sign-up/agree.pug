@@ -2,33 +2,33 @@ extends ../layout
 
 block head 
 block body
-  form.l-vertical
+  form.form-agree.l-vertical
     div.container
       h2 어서오세요
         br
         | 약관동의가 필요합니다.
-      div.form-agree
-        input(id="agree-all", type="checkbox", hidden=true)
+      div.form-checkbox
+        input(id="agree-all", type="checkbox", hidden)
         label(for="agree-all") 
           i
           strong 전체동의
       hr
       each agreeItem, index in agreeList
-        div.form-agree
-          input(id=agreeItem.id, name=agreeItem.id, type="checkbox", required=agreeItem.required, hidden=true)
+        div.form-checkbox
+          input(id=agreeItem.id, name=agreeItem.id, type="checkbox", required=agreeItem.required, hidden)
           label(for=agreeItem.id)
             i
             span=`${agreeItem.label} ${agreeItem.required ? "(필수)" : "(선택)"}`
       hr
-      div.form-age
-        input(id="age-over", name="age", type="radio", checked=true, hidden=true)
+      div.form-radio
+        input(id="age-over", name="age", type="radio", checked, hidden)
         label(for="age-over") 
           i
           div
             strong 만 14세 이상입니다.
         img(src="/images/age-over.png", alt="")
-      div.form-age
-        input(id="age-under", name="age", type="radio", hidden=true)
+      div.form-radio
+        input(id="age-under", name="age", type="radio", hidden)
         label(for="age-under")
           i 
           div 
@@ -36,4 +36,6 @@ block body
             span 본인확인이 된 보호자의 배민계정이 필요해요.
         img(src="/images/age-under.png", alt="")
     div.container
-      button.block-btn.theme-btn-primary.sign-in-btn(type="submit") 로그인
+      button.block-btn.theme-btn-primary.sign-in-btn(type="submit", disabled) 다음으로
+block script 
+  script(src="/javascripts/agree.js" type="module") 

@@ -1,7 +1,10 @@
 extends ../layout
+include ../mixins/form-input
 
 block head
 block body
-  h2 휴대전화번호인증
+  div.container
+    form.form-verify-phone
+      +form-input("phone", "휴대전화", true, true)(type="tel", name="phone")
 block script
   

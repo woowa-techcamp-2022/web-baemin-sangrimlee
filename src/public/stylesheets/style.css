@@ -32,12 +32,52 @@ body {
 
 main {
   height: 100%;
-  padding-top: 3.5rem;
+  padding: 3.5rem 0 2rem 0;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+hr {
+  border: 0;
+  margin: 1rem 0;
+  border-bottom: 2px solid var(--colors-gray-200);
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type='checkbox'] + label i {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+  background: url(/images/icons/checkbox-inactive.svg) no-repeat;
+}
+
+input[type='checkbox']:checked + label i {
+  background: url(/images/icons/checkbox-active.svg) no-repeat;
+}
+
+input[type='radio'] + label i {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+  background: url(/images/icons/radio-inactive.svg) no-repeat;
+}
+
+input[type='radio']:checked + label i {
+  background: url(/images/icons/radio-active.svg) no-repeat;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  pointer-events: none;
 }
 
 .container {
@@ -108,6 +148,11 @@ a {
 .theme-btn-primary {
   color: #ffffff;
   background-color: var(--colors-primary);
+  transition: background-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.theme-btn-primary:disabled {
+  background-color: var(--colors-gray-200);
 }
 
 .l-vertical {
@@ -115,4 +160,52 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  row-gap: 10rem;
+}
+
+.form-checkbox > label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  padding: 0.75rem 0;
+}
+
+.form-radio {
+  position: relative;
+}
+
+.form-radio + .form-radio {
+  margin-top: 1rem;
+}
+
+.form-radio strong {
+  font-size: 1rem;
+}
+
+.form-radio > label {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--colors-gray-50);
+}
+
+.form-radio > label > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-radio span {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--colors-gray-400);
+}
+
+.form-radio img {
+  height: 5rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
 }

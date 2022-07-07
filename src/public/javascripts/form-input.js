@@ -32,3 +32,12 @@ export function handleFormInputEvent($element, options) {
     });
   }
 }
+
+export function disableFormInput($element) {
+  const $inputElement = $element.querySelector('input');
+  const $deleteBtn = $element.querySelector('.delete-btn');
+  $inputElement.disabled = true;
+  if ($deleteBtn) {
+    $deleteBtn.disabled = true;
+  }
+}

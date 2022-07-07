@@ -8,12 +8,12 @@ block main
   .container
     form.additional-info-form
       .email-wrap
-        +form-input("email", "이메일", false, true)(
+        +form-input("email", "이메일", true, true, "email-input")(
           type='email',
           name='email',
           placeholder='이메일을 입력하세요.'
         )
-        button.check-duplicate-btn.theme-btn-default(type='button') 중복확인
+        button.check-duplicate-btn.theme-btn-default(type='button', disabled) 중복확인
       .additional-info-wrap.hidden
         +form-input("nickname", "닉네임", false, true)(
           type='text',
@@ -33,4 +33,4 @@ block main
       input(type='submit', hidden)
 
 block script
-  script(src='/javascripts/additional-info.js') 
+  script(src='/javascripts/additional-info.js', type='module') 

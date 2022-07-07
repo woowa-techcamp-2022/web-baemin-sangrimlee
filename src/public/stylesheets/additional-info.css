@@ -24,3 +24,7 @@
 .check-duplicate-btn:hover {
   opacity: 0.75;
 }
+
+.form-input.is-error + .check-duplicate-btn {
+  margin-bottom: 1.25rem;
+}

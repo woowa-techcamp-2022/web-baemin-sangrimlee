@@ -40,6 +40,29 @@ a {
   text-decoration: none;
 }
 
+hr {
+  border: 0;
+  border-bottom: 2px solid var(--colors-gray-200);
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type='checkbox'] + label i {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+
+  border: 2px solid var(--colors-gray-200);
+  border-radius: 0.25rem;
+}
+
+input[type='checkbox']:checked + label i {
+  border: 0;
+  background: url(/images/icons/btn-check.svg) no-repeat;
+}
+
 .container {
   padding: 0 1.25rem;
 }
@@ -115,4 +138,11 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.form-agree > label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  padding: 0.75rem 0;
 }

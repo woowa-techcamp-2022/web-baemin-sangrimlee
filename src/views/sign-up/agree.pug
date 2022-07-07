@@ -2,17 +2,21 @@ extends ../layout
 
 block head 
 block body
-  div
+  div.container
     h2 어서오세요
       br
       | 약관동의가 필요합니다.
     form
-      div 
-        input(id="agree-all", type="checkbox")
-        label(for="agree-all") 전체동의
+      div.form-agree
+        input(id="agree-all", type="checkbox", hidden=true)
+        label(for="agree-all") 
+          i
+          strong 전체동의
       hr
       each agreeItem, index in agreeList
-        div
-          input(id=agreeItem.id, name=agreeItem.id, type="checkbox", required=agreeItem.required)
-          label(for=agreeItem.id)=`${agreeItem.label} ${!agreeItem.required ? "(선택)" : ""}`
+        div.form-agree
+          input(id=agreeItem.id, name=agreeItem.id, type="checkbox", required=agreeItem.required, hidden=true)
+          label(for=agreeItem.id)
+            i
+            =`${agreeItem.label} ${agreeItem.required ? "(필수)" : "(선택)"}`
       hr

@@ -19,11 +19,15 @@
   border-color: var(--colors-error);
 }
 
+.form-input > label {
+  margin-bottom: 0.5rem;
+}
+
 .form-input-wrap > input {
   width: 100%;
   border: none;
   outline: none;
-  padding: 1rem 0;
+  padding: 0.75rem 0;
   font-size: 1rem;
   background: none;
 }

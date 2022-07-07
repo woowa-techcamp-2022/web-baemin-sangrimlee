@@ -1,0 +1,26 @@
+.additional-info-form,
+.additional-info-wrap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+}
+
+.email-wrap {
+  display: flex;
+  align-items: flex-end;
+}
+
+.email-wrap .form-input {
+  flex: 1;
+}
+
+.check-duplicate-btn {
+  margin: 0 0 0 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  background: none;
+}
+
+.check-duplicate-btn:hover {
+  opacity: 0.75;
+}

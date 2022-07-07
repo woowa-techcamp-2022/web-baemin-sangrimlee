@@ -42,6 +42,7 @@ a {
 
 hr {
   border: 0;
+  margin: 1rem 0;
   border-bottom: 2px solid var(--colors-gray-200);
 }
 
@@ -58,6 +59,17 @@ input[type='checkbox'] + label i {
 
 input[type='checkbox']:checked + label i {
   background: url(/images/icons/checkbox-active.svg) no-repeat;
+}
+
+input[type='radio'] + label i {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+  background: url(/images/icons/radio-inactive.svg) no-repeat;
+}
+
+input[type='radio']:checked + label i {
+  background: url(/images/icons/radio-active.svg) no-repeat;
 }
 
 .container {
@@ -138,8 +150,48 @@ input[type='checkbox']:checked + label i {
 }
 
 .form-agree > label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   font-size: 1rem;
   padding: 0.75rem 0;
+}
+
+.form-age {
+  position: relative;
+}
+
+.form-age + .form-age {
+  margin-top: 1rem;
+}
+
+.form-age strong {
+  font-size: 1rem;
+}
+
+.form-age > label {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--colors-gray-50);
+}
+
+.form-age > label > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-age span {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--colors-gray-400);
+}
+
+.form-age img {
+  height: 5rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
 }

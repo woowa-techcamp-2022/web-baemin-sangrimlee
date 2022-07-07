@@ -2,9 +2,11 @@ extends ../layout
 include ../mixins/form-input
 
 block head
+  link(rel='stylesheet', href='/stylesheets/verify-phone.css')
 block body
   div.container
     form.form-verify-phone
       +form-input("phone", "휴대전화", true, true)(type="tel", name="phone", maxlength="13")
+      button.block-btn.theme-btn-default.send-code-btn(type="submit") 인증번호 받기
 block script
   script(src="/javascripts/verify-phone.js" type="module")

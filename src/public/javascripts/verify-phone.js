@@ -1,49 +1,50 @@
-function createVerifyCode() {
-  return Math.random().toString(10).substring(2, 6);
-}
-
-function sendVerifyCode($inputElement) {
-  setTimeout(() => {
-    $inputElement.value = createVerifyCode();
-  }, 2000);
-}
+import { disableFormInput, handleFormInputEvent } from './form-input.js';
+import {
+  preprocessPhoneNumber,
+  preprocessVerifyCode,
+} from './utils/preprocess.js';
+import { validatePhoneNumber, validateVerifyCode } from './utils/validate.js';
+import { sendVerifyCode } from './utils/verify-code.js';
 
 function init() {
-  const $verifyPhoneForm = document.querySelector('form.verify-phone-form');
-  const $phoneInput = document.querySelector('.form-input');
-  const $sendCodeBtn = document.querySelector('.send-code-btn');
-  const $verifyCodeForm = document.querySelector('form.verify-code-form');
-  const $verifyCodeInput = $verifyCodeForm.querySelector('input');
+  const $form = document.querySelector('form.verify-phone-form');
+  const $phoneInput = $form.querySelector('.phone-input');
+  const $verifyCodeWrapper = $form.querySelector('.verify-code-wrap');
+  const $verifyCodeInput = $form.querySelector('.verify-code-input');
+  const $sendCodeBtn = $form.querySelector('.send-code-btn');
   const $resendCodeBtn = document.querySelector('.resend-code-btn');
 
-  $phoneInput.addEventListener('input', (event) => {
-    const currentValue = event.target.value;
-    const processed = currentValue
-      .replace(/[^0-9]/g, '')
-      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
-      .replace(/-{1,2}$/g, '');
-    event.target.value = processed;
-    const isValid = processed.length === 13;
-    $phoneInput.classList.toggle('is-valid', isValid);
-    $sendCodeBtn.disabled = !isValid;
+  handleFormInputEvent($phoneInput, {
+    preprocess: preprocessPhoneNumber,
+    validate: validatePhoneNumber,
+    onValidate: (isValid) => {
+      $sendCodeBtn.disabled = !isValid;
+    },
+    errorMessage: '올바른 전화번호 형식이 아닙니다.',
   });
 
-  $phoneInput.querySelector('.delete-btn').addEventListener('click', () => {
-    $phoneInput.querySelector('input').value = '';
-  });
+  const { setValue: setVerifyCodeInput } = handleFormInputEvent(
+    $verifyCodeInput,
+    {
+      preprocess: preprocessVerifyCode,
+      validate: validateVerifyCode,
+      errorMessage: '인증번호는 4자리의 숫자로 이루어져있습니다.',
+    },
+  );
 
-  $verifyPhoneForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+  $sendCodeBtn.addEventListener('click', () => {
+    disableFormInput($phoneInput);
     $sendCodeBtn.remove();
-    $verifyCodeForm.classList.remove('hidden');
-    sendVerifyCode($verifyCodeInput);
-    alert('인증번호가 발송되었습니다.');
-    $phoneInput.querySelector('input').disabled = true;
+    $verifyCodeWrapper.classList.remove('hidden');
+    sendVerifyCode(setVerifyCodeInput);
   });
 
   $resendCodeBtn.addEventListener('click', () => {
-    sendVerifyCode($verifyCodeInput);
-    alert('인증번호가 발송되었습니다.');
+    sendVerifyCode(setVerifyCodeInput);
+  });
+
+  $form.addEventListener('submit', (event) => {
+    event.preventDefault();
   });
 }
 

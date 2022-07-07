@@ -1,5 +1,5 @@
-mixin form-input(id, labelText="", showDeleteBtn=false, showCheckIcon=false)
-  .form-input
+mixin form-input(id, labelText="", showDeleteBtn=false, showCheckIcon=false, classNames="")
+  div(class=`form-input ${classNames}`)
     if labelText
       label(for=id)= labelText
     .form-input-wrap

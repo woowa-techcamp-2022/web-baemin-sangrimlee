@@ -4,10 +4,14 @@ include ../mixins/block-btn
 
 block head
   link(rel='stylesheet', href='/stylesheets/verify-phone.css')
+
 block body
   div.container
-    form.form-verify-phone
-      +form-input("phone", "휴대전화", true, true)(type="tel", name="phone", maxlength="13")
+    form.verify-phone-form
+      +form-input("phone", "휴대전화", true, true)(type="tel", name="phone", maxlength="13", placeholder="전화번호를 입력해주세요.")
       +block-btn("인증번호 받기", false, "send-code-btn")(type="submit", disabled)
+    form.verify-code-form.hidden
+      +form-input("verify-code", "인증번호", true, true)(type="text", name="code", pattern="[0-9]{4}",  maxlength="4", placeholder="인증번호를 입력해주세요.") 
+      button.resend-code-btn(type="button") 인증번호 다시받기
 block script
   script(src="/javascripts/verify-phone.js" type="module")

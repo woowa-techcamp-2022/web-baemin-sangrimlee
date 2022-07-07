@@ -2,11 +2,11 @@ extends ../layout
 
 block head 
 block body
-  div.container
-    h2 어서오세요
-      br
-      | 약관동의가 필요합니다.
-    form
+  form.l-vertical
+    div.container
+      h2 어서오세요
+        br
+        | 약관동의가 필요합니다.
       div.form-agree
         input(id="agree-all", type="checkbox", hidden=true)
         label(for="agree-all") 
@@ -35,3 +35,5 @@ block body
             strong 만 14세 미만입니다.
             span 본인확인이 된 보호자의 배민계정이 필요해요.
         img(src="/images/age-under.png", alt="")
+    div.container
+      button.block-btn.theme-btn-primary.sign-in-btn(type="submit") 로그인

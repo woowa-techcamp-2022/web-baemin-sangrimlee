@@ -1,4 +1,5 @@
-.additional-info-form {
+.additional-info-form,
+.additional-info-wrap {
   display: flex;
   flex-direction: column;
   row-gap: 2em;

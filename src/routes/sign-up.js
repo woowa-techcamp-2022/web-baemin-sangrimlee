@@ -39,6 +39,10 @@ router.get('/agree', (req, res) => {
   });
 });
 
+router.post('/agree', (req, res) => {
+  res.redirect('/sign-up/verify-phone');
+});
+
 router.get('/verify-phone', (req, res) => {
   res.render('sign-up/verify-phone', {
     title: '회원가입',

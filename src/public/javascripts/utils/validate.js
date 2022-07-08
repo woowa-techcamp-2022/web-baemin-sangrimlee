@@ -22,10 +22,29 @@ export function validateNickname(nickname) {
   return NICKNAME_REGEX.test(nickname);
 }
 
+export function validateSequence(password) {
+  for (var i = 0; i < password.length; ++i) {
+    if (
+      password.charCodeAt(i) === password.charCodeAt(i + 1) - 1 &&
+      password.charCodeAt(i) === password.charCodeAt(i + 2) - 2
+    ) {
+      return false;
+    }
+    if (
+      password.charCodeAt(i) === password.charCodeAt(i + 1) &&
+      password.charCodeAt(i + 1) === password.charCodeAt(i + 2)
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+
 export function validatePassword(password) {
   return (
     10 <= password.length &&
-    2 <= PASSWORD_REGEXS.filter((regex) => regex.test(password)).length
+    2 <= PASSWORD_REGEXS.filter((regex) => regex.test(password)).length &&
+    validateSequence(password)
   );
 }
 

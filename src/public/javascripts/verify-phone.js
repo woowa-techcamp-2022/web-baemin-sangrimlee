@@ -13,6 +13,8 @@ function init() {
   const $verifyCodeInput = $form.querySelector('.verify-code-input');
   const $sendCodeBtn = $form.querySelector('.send-code-btn');
   const $resendCodeBtn = document.querySelector('.resend-code-btn');
+  const $inputList = [$phoneInput, $verifyCodeInput];
+  const $headerBtn = document.querySelector('#header-btn');
 
   handleFormInputEvent($phoneInput, {
     preprocess: preprocessPhoneNumber,
@@ -36,11 +38,26 @@ function init() {
     disableFormInput($phoneInput);
     $sendCodeBtn.remove();
     $verifyCodeWrapper.classList.remove('hidden');
-    sendVerifyCode(setVerifyCodeInput);
+    sendVerifyCode(setVerifyCodeInput, () => {
+      $headerBtn.disabled = false;
+    });
   });
 
   $resendCodeBtn.addEventListener('click', () => {
-    sendVerifyCode(setVerifyCodeInput);
+    sendVerifyCode(setVerifyCodeInput, () => {
+      $headerBtn.disabled = false;
+    });
+  });
+
+  $form.addEventListener('input', () => {
+    const isAllValid = $inputList.every(($inputElement) =>
+      $inputElement.classList.contains('is-valid'),
+    );
+    $headerBtn.disabled = !isAllValid;
+  });
+
+  $headerBtn.addEventListener('click', () => {
+    window.location.replace('/sign-up/additional-info');
   });
 
   $form.addEventListener('submit', (event) => {

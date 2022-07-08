@@ -18,6 +18,14 @@ function init() {
     '.check-duplicate-btn',
   );
 
+  const $headerBtn = document.querySelector('#header-btn');
+  const $inputList = [
+    $emailInput,
+    $nicknameInput,
+    $passwordInput,
+    $birthdayInput,
+  ];
+
   handleFormInputEvent($emailInput, {
     validate: validateEmail,
     errorMessage: '올바른 이메일 형식이 아닙니다.',
@@ -49,9 +57,18 @@ function init() {
     event.target.disabled = true;
   });
 
+  $form.addEventListener('input', () => {
+    const isAllValid = $inputList.every(($inputElement) =>
+      $inputElement.classList.contains('is-valid'),
+    );
+    $headerBtn.disabled = !isAllValid;
+  });
+
   $form.addEventListener('submit', (event) => {
     event.preventDefault();
   });
+
+  $headerBtn.addEventListener('click', () => {});
 }
 
 init();

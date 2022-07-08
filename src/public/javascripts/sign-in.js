@@ -18,6 +18,7 @@ function init() {
   const $form = document.querySelector('.sign-in-form');
   const $emailInput = $form.querySelector('.email-input');
   const $passwordInput = $form.querySelector('.password-input');
+  const $formErrorMessage = $form.querySelector('.form-error-message');
 
   $form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -36,9 +37,11 @@ function init() {
     }
 
     const { ok, errorMessage } = await requestSignIn(email, password);
-    console.log(ok, errorMessage);
+    $formErrorMessage.classList.toggle('hidden', ok);
     if (ok) {
       window.location.replace('/');
+    } else {
+      $formErrorMessage.textContent = errorMessage;
     }
   });
 }

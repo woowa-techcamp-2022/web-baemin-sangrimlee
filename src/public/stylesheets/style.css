@@ -144,3 +144,10 @@ button:disabled {
   bottom: 0;
   right: 0;
 }
+
+.form-error-message {
+  font-size: 1rem;
+  color: var(--colors-error);
+  padding: 0.5rem 0;
+  text-align: center;
+}

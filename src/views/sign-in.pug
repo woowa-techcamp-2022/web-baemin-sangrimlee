@@ -9,6 +9,7 @@ block main
   .l-vertical
     .container
       form.sign-in-form
+        p.form-error-message.hidden
         +form-input("email", "", false, false, "email-input")(
           name='email',
           type='text',

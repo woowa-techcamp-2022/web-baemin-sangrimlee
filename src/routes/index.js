@@ -11,7 +11,11 @@ router.get('/sign-in', (req, res) => {
   if (session) {
     res.redirect('/');
   }
-  res.render('sign-in', { title: '로그인' });
+  res.render('sign-in', {
+    title: '로그인',
+    headerRightLink: 'close',
+    headerRightHref: '/',
+  });
 });
 
 module.exports = router;

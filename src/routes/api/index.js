@@ -1,7 +1,7 @@
 const express = require('express');
-const { createUUID } = require('../lib/uuid');
-const { createSession } = require('../db/session');
-const { createUser, isEmailExist, signInUser } = require('../db/user');
+const { createUUID } = require('../../lib/uuid');
+const { createSession } = require('../../db/session');
+const { createUser, isEmailExist, signInUser } = require('../../db/user');
 
 const router = express.Router();
 

@@ -2,7 +2,7 @@ const db = require('./index');
 const { hash } = require('../lib/hash');
 
 function isEmailExist(email, callback) {
-  db.get('SELECT email FROM user WHERE email = ? LIMIT 1', email, callback);
+  db.get('SELECT email FROM user WHERE email = ?', email, callback);
 }
 
 function createUser(email, nickname, password, birthday, callback) {
@@ -18,9 +18,17 @@ function createUser(email, nickname, password, birthday, callback) {
 
 function signInUser(email, password, callback) {
   db.get(
-    'SELECT id, email FROM user WHERE email = ? AND password = ? LIMIT 1',
+    'SELECT id, email FROM user WHERE email = ? AND password = ?',
     email,
     hash(password),
+    callback,
+  );
+}
+
+function findUserById(userId, callback) {
+  db.get(
+    'SELECT id, email, nickname, birthday FROM user WHERE id = ?',
+    userId,
     callback,
   );
 }
@@ -29,4 +37,5 @@ module.exports = {
   createUser,
   isEmailExist,
   signInUser,
+  findUserById,
 };

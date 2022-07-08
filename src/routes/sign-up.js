@@ -1,6 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+router.use((req, res, next) => {
+  const { session } = req;
+  if (session) {
+    res.redirect('/');
+  }
+  next();
+});
+
 router.get('/', (req, res) => {
   res.redirect('/sign-up/agree');
 });

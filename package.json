@@ -31,7 +31,8 @@
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.19",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "sqlite3": "^5.0.8"
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^2.1.1",

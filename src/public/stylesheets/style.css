@@ -28,13 +28,13 @@ body {
 }
 
 body {
-  max-width: 32rem;
-  margin: 0 auto;
 }
 
 main {
   height: 100%;
-  padding: 3.5rem 0 2rem 0;
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 6rem 0 2rem 0;
 }
 
 a {
@@ -148,6 +148,5 @@ button:disabled {
 .form-error-message {
   font-size: 1rem;
   color: var(--colors-error);
-  padding: 0.5rem 0;
   text-align: center;
 }

@@ -1,3 +1,4 @@
+import { requestSignUp } from './api/sign-up.js';
 import { handleFormInputEvent, disableFormInput } from './form-input.js';
 import { preprocessBirthday } from './utils/preprocess.js';
 import {
@@ -17,8 +18,17 @@ function init() {
   const $checkEmailDuplicateButton = $form.querySelector(
     '.check-duplicate-btn',
   );
+  const $formErrorMessage = $form.querySelector('.form-error-message');
 
-  handleFormInputEvent($emailInput, {
+  const $headerBtn = document.querySelector('#header-btn');
+  const $inputList = [
+    $emailInput,
+    $nicknameInput,
+    $passwordInput,
+    $birthdayInput,
+  ];
+
+  const { getValue: getEmailValue } = handleFormInputEvent($emailInput, {
     validate: validateEmail,
     errorMessage: '올바른 이메일 형식이 아닙니다.',
     onValidate: (isValid) => {
@@ -26,18 +36,18 @@ function init() {
     },
   });
 
-  handleFormInputEvent($nicknameInput, {
+  const { getValue: getNicknameValue } = handleFormInputEvent($nicknameInput, {
     validate: validateNickname,
     errorMessage: '2자 이상, 16자 이하 영문, 한글, 숫자만 포함해야합니다.',
   });
 
-  handleFormInputEvent($passwordInput, {
+  const { getValue: getPasswordValue } = handleFormInputEvent($passwordInput, {
     validate: validatePassword,
     errorMessage:
       '10자 이상 영어 대문자, 소문자, 숫자, 특수문자 중 2종류를 조합해야합니다.',
   });
 
-  handleFormInputEvent($birthdayInput, {
+  const { getValue: getBirthdayValue } = handleFormInputEvent($birthdayInput, {
     preprocess: preprocessBirthday,
     validate: validateDateString,
     errorMessage: '올바른 날짜 형식이 아닙니다.',
@@ -49,8 +59,30 @@ function init() {
     event.target.disabled = true;
   });
 
+  $form.addEventListener('input', () => {
+    const isAllValid = $inputList.every(($inputElement) =>
+      $inputElement.classList.contains('is-valid'),
+    );
+    $headerBtn.disabled = !isAllValid;
+  });
+
   $form.addEventListener('submit', (event) => {
     event.preventDefault();
+  });
+
+  $headerBtn.addEventListener('click', async () => {
+    const { ok, errorMessage } = await requestSignUp(
+      getEmailValue(),
+      getPasswordValue(),
+      getNicknameValue(),
+      getBirthdayValue(),
+    );
+    $formErrorMessage.classList.toggle('hidden', ok);
+    if (ok) {
+      window.location.replace('/sign-in');
+    } else {
+      $formErrorMessage.textContent = errorMessage;
+    }
   });
 }
 

@@ -7,6 +7,7 @@ block head
 block main
   .container
     form.additional-info-form
+      p.form-error-message.hidden
       .email-wrap
         +form-input("email", "이메일", true, true, "email-input")(
           type='email',
@@ -31,7 +32,6 @@ block main
           placeholder='예) 2000.01.01',
           maxLength=10
         )
-      input(type='submit', hidden)
 
 block script
   script(src='/javascripts/additional-info.js', type='module') 

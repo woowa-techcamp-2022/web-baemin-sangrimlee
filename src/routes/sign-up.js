@@ -1,6 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+router.use((req, res, next) => {
+  const { session } = req;
+  if (session) {
+    res.redirect('/');
+  }
+  next();
+});
+
 router.get('/', (req, res) => {
   res.redirect('/sign-up/agree');
 });
@@ -9,6 +17,8 @@ router.get('/agree', (req, res) => {
   res.render('sign-up/agree', {
     title: '회원가입',
     headerTitle: '회원가입',
+    headerRightLink: 'close',
+    headerRightHref: '/',
     agreeList: [
       {
         id: 'agree-1',
@@ -39,10 +49,17 @@ router.get('/agree', (req, res) => {
   });
 });
 
+router.post('/agree', (req, res) => {
+  res.redirect('/sign-up/verify-phone');
+});
+
 router.get('/verify-phone', (req, res) => {
   res.render('sign-up/verify-phone', {
     title: '회원가입',
     headerTitle: '회원가입',
+    headerRightLink: 'arrow-left',
+    headerRightHref: '/sign-up/agree',
+    headerLeftLabel: '다음',
   });
 });
 
@@ -50,6 +67,9 @@ router.get('/additional-info', (req, res) => {
   res.render('sign-up/additional-info', {
     title: '회원가입',
     headerTitle: '회원가입',
+    headerRightLink: 'arrow-left',
+    headerRightHref: '/sign-up/verify-phone',
+    headerLeftLabel: '완료',
   });
 });
 

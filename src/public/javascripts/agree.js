@@ -30,10 +30,6 @@ function init() {
       (element) => element.checked,
     );
   });
-
-  $form.addEventListener('submit', (event) => {
-    event.preventDefault();
-  });
 }
 
 init();

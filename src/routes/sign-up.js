@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/agree', (req, res) => {
-  res.render('sign-up/agree', {
+  res.render('pages/sign-up/agree', {
     title: '회원가입',
     headerTitle: '회원가입',
     headerRightLink: 'close',
@@ -54,7 +54,7 @@ router.post('/agree', (req, res) => {
 });
 
 router.get('/verify-phone', (req, res) => {
-  res.render('sign-up/verify-phone', {
+  res.render('pages/sign-up/verify-phone', {
     title: '회원가입',
     headerTitle: '회원가입',
     headerRightLink: 'arrow-left',
@@ -64,7 +64,7 @@ router.get('/verify-phone', (req, res) => {
 });
 
 router.get('/additional-info', (req, res) => {
-  res.render('sign-up/additional-info', {
+  res.render('pages/sign-up/additional-info', {
     title: '회원가입',
     headerTitle: '회원가입',
     headerRightLink: 'arrow-left',

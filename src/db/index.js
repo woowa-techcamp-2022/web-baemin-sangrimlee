@@ -11,7 +11,7 @@ function createFile(filePath) {
 }
 
 const db = new sqlite3.Database(
-  createFile('db/db.sqlite'),
+  createFile(process.env.DATABASE_PATH),
   sqlite3.OPEN_READWRITE,
   (error) => {
     if (error) {

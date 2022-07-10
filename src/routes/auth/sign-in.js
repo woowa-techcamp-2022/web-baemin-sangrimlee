@@ -1,4 +1,5 @@
 const express = require('express');
+const { SOCIAL_LIST } = require('../../constants/social');
 
 const router = express.Router();
 
@@ -7,6 +8,7 @@ router.get('/', (req, res) => {
     title: '로그인',
     headerRightLink: 'close',
     headerRightHref: '/',
+    socialList: SOCIAL_LIST,
   });
 });
 

@@ -4,7 +4,9 @@ block head
   link(rel='stylesheet', href='/stylesheets/index.css')
 
 block main
-  .container
+  section.banner
+    img(src='images/banner.png')
+  section.container
     a.login-link(href=session ? '/my' : '/auth/sign-in')
       img(src='images/profile.png', alt='프로필 이미지', width='68px', height='68px')
       span 
@@ -12,3 +14,9 @@ block main
           = `고마운 분, ${session.nickname}`
         else
           = '로그인 해주세요.'
+  section
+    ul.my-menu 
+      each myMenuItem in myMenuList
+        li.my-menu-item
+          img(src=myMenuItem.imgSrc, width='40', height='40') 
+          span= myMenuItem.label

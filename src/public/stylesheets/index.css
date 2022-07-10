@@ -1,3 +1,7 @@
+.banner > img {
+  width: 100%;
+}
+
 .login-link {
   display: flex;
   align-items: center;
@@ -9,4 +13,39 @@
   margin-left: 1rem;
   font-size: 1.75rem;
   color: var(--colors-gray-500);
+}
+
+.my-menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 2px solid var(--colors-gray-100);
+  border-bottom: 2px solid var(--colors-gray-100);
+}
+
+.my-menu-item {
+  width: 33.3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.75rem;
+  padding: 1.5rem;
+  transition: background-color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}
+
+.my-menu-item:hover {
+  background-color: var(--colors-gray-50);
+}
+
+.my-menu-item:nth-child(n + 1):nth-child(-n + 3) {
+  border-bottom: 2px solid var(--colors-gray-100);
+}
+
+.my-menu-item:nth-child(3n + 2) {
+  border-left: 2px solid var(--colors-gray-100);
+  border-right: 2px solid var(--colors-gray-100);
 }

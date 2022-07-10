@@ -1,4 +1,5 @@
 const express = require('express');
+const { MY_MENU_LIST } = require('../constants/my-menu');
 const apiRouter = require('./api');
 const authRouter = require('./auth');
 
@@ -6,11 +7,11 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   const { session } = req;
-  res.render('pages/error');
 
   res.render('pages/index', {
     title: 'My배민',
     headerTitle: 'My배민',
+    myMenuList: MY_MENU_LIST,
     session,
   });
 });

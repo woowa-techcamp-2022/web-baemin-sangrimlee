@@ -42,7 +42,7 @@ router.get('/agree', (req, res) => {
 });
 
 router.post('/agree', (req, res) => {
-  res.redirect('/sign-up/verify-phone');
+  res.redirect('/auth/sign-up/verify-phone');
 });
 
 router.get('/verify-phone', (req, res) => {
@@ -50,7 +50,7 @@ router.get('/verify-phone', (req, res) => {
     title: '회원가입',
     headerTitle: '회원가입',
     headerRightLink: 'arrow-left',
-    headerRightHref: '/sign-up/agree',
+    headerRightHref: '/auth/sign-up/agree',
     headerLeftLabel: '다음',
   });
 });
@@ -60,7 +60,7 @@ router.get('/additional-info', (req, res) => {
     title: '회원가입',
     headerTitle: '회원가입',
     headerRightLink: 'arrow-left',
-    headerRightHref: '/sign-up/verify-phone',
+    headerRightHref: '/auth/sign-up/verify-phone',
     headerLeftLabel: '완료',
   });
 });

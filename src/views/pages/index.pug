@@ -5,7 +5,7 @@ block head
 
 block main
   .container
-    a.login-link(href=session ? '/my' : '/sign-in')
+    a.login-link(href=session ? '/my' : '/auth/sign-in')
       img(src='images/profile.png', alt='프로필 이미지', width='68px', height='68px')
       span 
         if session

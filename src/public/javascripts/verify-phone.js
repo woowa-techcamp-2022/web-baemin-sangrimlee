@@ -57,7 +57,7 @@ function init() {
   });
 
   $headerBtn.addEventListener('click', () => {
-    window.location.replace('/sign-up/additional-info');
+    window.location.replace('/auth/sign-up/additional-info');
   });
 
   $form.addEventListener('submit', (event) => {

@@ -1,5 +1,5 @@
-const { getSession } = require('../db/session');
-const { findUserById } = require('../db/user');
+const { getSession } = require('../models/session');
+const { findUserById } = require('../models/user');
 
 function session(req, res, next) {
   const sid = req.cookies['sid'];

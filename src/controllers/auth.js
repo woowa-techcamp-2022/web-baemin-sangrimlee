@@ -68,7 +68,30 @@ function signIn(req, res) {
   });
 }
 
+function checkEmail(req, res) {
+  const { email } = req.query;
+
+  isEmailExist(email, (isEmailExistError, user) => {
+    if (isEmailExistError) {
+      res.status(500).json({
+        ok: false,
+        errorMessage: isEmailExistError.message,
+      });
+    } else if (user) {
+      res.status(400).json({
+        ok: false,
+        errorMessage: '이미 존재하는 이메일 계정입니다.',
+      });
+    } else {
+      res.status(200).json({
+        ok: true,
+      });
+    }
+  });
+}
+
 module.exports = {
   signUp,
   signIn,
+  checkEmail,
 };

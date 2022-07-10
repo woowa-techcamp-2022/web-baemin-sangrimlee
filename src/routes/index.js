@@ -1,5 +1,5 @@
 const express = require('express');
-const { MY_MENU_LIST } = require('../constants/my-menu');
+const { MY_MENU_LIST, MENU_LIST } = require('../constants/menu');
 const apiRouter = require('./api');
 const authRouter = require('./auth');
 
@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     title: 'My배민',
     headerTitle: 'My배민',
     myMenuList: MY_MENU_LIST,
+    menuList: MENU_LIST,
     session,
   });
 });

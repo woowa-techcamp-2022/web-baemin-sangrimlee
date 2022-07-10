@@ -1,4 +1,4 @@
-const db = require('./index');
+const db = require('../db');
 
 function createSession(uid, sid, callback) {
   db.run('INSERT INTO session (uid, sid) VALUES (?,?)', uid, sid, callback);

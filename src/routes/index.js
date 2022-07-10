@@ -1,4 +1,7 @@
 const express = require('express');
+const apiRouter = require('./api');
+const authRouter = require('./auth');
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -10,16 +13,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/sign-in', (req, res) => {
-  const { session } = req;
-  if (session) {
-    res.redirect('/');
-  }
-  res.render('pages/sign-in', {
-    title: '로그인',
-    headerRightLink: 'close',
-    headerRightHref: '/',
-  });
-});
+router.use('/api', apiRouter);
+router.use('/auth', authRouter);
 
 module.exports = router;

@@ -1,3 +1,4 @@
+import { requestCheckEmail } from './api/check-email.js';
 import { requestSignUp } from './api/sign-up.js';
 import { handleFormInputEvent, disableFormInput } from './form-input.js';
 import { preprocessBirthday } from './utils/preprocess.js';
@@ -53,10 +54,17 @@ function init() {
     errorMessage: '올바른 날짜 형식이 아닙니다.',
   });
 
-  $checkEmailDuplicateButton.addEventListener('click', (event) => {
-    $additionalInputWrapper.classList.remove('hidden');
-    disableFormInput($emailInput);
-    event.target.disabled = true;
+  $checkEmailDuplicateButton.addEventListener('click', async (event) => {
+    const { ok, errorMessage } = await requestCheckEmail(getEmailValue());
+    $formErrorMessage.classList.toggle('hidden', ok);
+    if (ok) {
+      $additionalInputWrapper.classList.remove('hidden');
+      disableFormInput($emailInput);
+      event.target.disabled = true;
+      $formErrorMessage.textContent = '';
+    } else {
+      $formErrorMessage.textContent = errorMessage;
+    }
   });
 
   $form.addEventListener('input', () => {

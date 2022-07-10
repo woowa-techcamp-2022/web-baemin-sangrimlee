@@ -1,3 +1,7 @@
+.addtional-info-container {
+  margin-top: 3rem;
+}
+
 .additional-info-form,
 .additional-input-wrap {
   display: flex;

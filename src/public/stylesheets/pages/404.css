@@ -1,4 +1,5 @@
 .not-found-wrap {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,11 +7,19 @@
   margin: auto;
 }
 
+.not-found-wrap > h2 {
+  font-family: 'BMHannaPro';
+  font-size: 95px;
+  font-weight: 800;
+  line-height: 1;
+  margin: 0 auto;
+}
+
 .not-found-wrap > p {
   margin: 3rem 0 2rem 0;
 
   font-size: 1.125rem;
-  line-height: 1.375;
+  line-height: 1.5;
   letter-spacing: -0.8px;
   text-align: center;
 }

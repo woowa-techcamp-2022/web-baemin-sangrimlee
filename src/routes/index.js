@@ -12,7 +12,10 @@ router.get('/', (req, res) => {
     title: 'My배민',
     headerTitle: 'My배민',
     myMenuList: MY_MENU_LIST,
-    menuList: MENU_LIST,
+    menuList: [
+      ...MENU_LIST,
+      ...(session ? [{ title: '로그아웃', href: '/api/sign-out' }] : []),
+    ],
     session,
   });
 });

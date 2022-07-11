@@ -26,12 +26,13 @@ block main
   section.menu-list-section
     ul.menu-list
       each menuItem in menuList
-        li.menu-item
-          .menu-item-content
-            .menu-title-wrap
-              span.menu-title= menuItem.title
-              if menuItem.isNew
-                span.badge NEW
-            if menuItem.description
-              p.menu-description= menuItem.description
-          i.chevron-forward
+        li
+          a.menu-item(href=menuItem.href)
+            .menu-item-content
+              .menu-title-wrap
+                span.menu-title= menuItem.title
+                if menuItem.isNew
+                  span.badge NEW
+              if menuItem.description
+                p.menu-description= menuItem.description
+            i.chevron-forward

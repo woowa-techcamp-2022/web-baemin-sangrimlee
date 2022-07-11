@@ -58,7 +58,12 @@ function signIn(req, res) {
         } else {
           res
             .status(201)
-            .cookie('sid', sid, { maxAge: 60 * 60 * 24 * 30, httpOnly: true })
+            .cookie('sid', sid, {
+              maxAge: 60 * 60 * 24 * 30,
+              path: '/',
+              httpOnly: true,
+              secure: process.env.NODE_ENV === 'production',
+            })
             .json({
               ok: true,
             });
@@ -90,8 +95,21 @@ function checkEmail(req, res) {
   });
 }
 
+function signOut(req, res) {
+  res
+    .status(200)
+    .cookie('sid', '', {
+      maxAge: 0,
+      path: '/',
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+    })
+    .redirect('/');
+}
+
 module.exports = {
   signUp,
   signIn,
   checkEmail,
+  signOut,
 };

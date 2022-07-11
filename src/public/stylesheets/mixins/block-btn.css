@@ -29,7 +29,7 @@
 .theme-btn-default {
   color: #000000;
   background-color: transparent;
-  border: 2px solid var(--colors-gray-200);
+  border: 1px solid var(--colors-gray-200);
 }
 
 .theme-btn-default:disabled {

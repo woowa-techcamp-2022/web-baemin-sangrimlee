@@ -1,11 +1,11 @@
-extends ../layout
-include ../mixins/form-input
+extends ../../layouts/layout
+include ../../mixins/form-input
 
 block head
-  link(rel='stylesheet', href='/stylesheets/additional-info.css')
+  link(rel='stylesheet', href='/stylesheets/pages/additional-info.css')
 
 block main
-  .container
+  .container.addtional-info-container
     form.additional-info-form
       p.form-error-message.hidden
       .email-wrap

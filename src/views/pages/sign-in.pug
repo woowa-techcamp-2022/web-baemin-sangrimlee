@@ -1,9 +1,9 @@
-extends layout
-include mixins/form-input
-include mixins/block-btn
+extends ../layouts/layout
+include ../mixins/form-input
+include ../mixins/block-btn
 
 block head
-  link(rel='stylesheet', href='/stylesheets/sign-in.css')
+  link(rel='stylesheet', href='/stylesheets/pages/sign-in.css')
 
 block main
   .l-vertical
@@ -21,10 +21,14 @@ block main
           placeholder='비밀번호'
         )
         +block-btn("로그인", true, "sign-in-btn")(type='submit')
-    .container
+    .container.bottom-container
+      each socialItem in socialList
+        button.social-btn
+          i(class=socialItem.icon)
+          span= socialItem.label
       p.sign-up-link 혹시, 배달의민족이 처음이신가요?
         = ' '
-        a(href='/sign-up') 회원가입
+        a(href='/auth/sign-up') 회원가입
 
 block script
   script(src='/javascripts/sign-in.js', type='module')

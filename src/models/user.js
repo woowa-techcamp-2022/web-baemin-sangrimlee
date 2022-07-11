@@ -1,4 +1,4 @@
-const db = require('./index');
+const db = require('../db');
 const { hash } = require('../lib/hash');
 
 function isEmailExist(email, callback) {
